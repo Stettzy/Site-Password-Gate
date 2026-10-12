@@ -1,0 +1,26 @@
+{
+  "name": "stettzy/site-password-gate",
+  "description": "A simple whole-site password gate for WordPress.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpcompatibility/php-compatibility": "^9.3",
+    "wp-coding-standards/wpcs": "^3.2"
+  },
+  "scripts": {
+	"check": [
+	  "@lint",
+	  "@test"
+	],
+    "lint": "phpcs",
+	"lint:fix": "phpcbf",
+	"test": "php tests/run.php"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}

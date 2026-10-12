@@ -1,0 +1,156 @@
+:root {
+	color-scheme: light;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-synthesis: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body.spg-gate {
+	display: grid;
+	min-height: 100vh;
+	min-height: 100dvh;
+	margin: 0;
+	padding: 24px;
+	place-items: center;
+	color: #182230;
+	background:
+		radial-gradient(circle at 20% 15%, rgba(85, 110, 230, 0.16), transparent 34%),
+		radial-gradient(circle at 85% 85%, rgba(23, 162, 184, 0.12), transparent 38%),
+		#f4f6f9;
+}
+
+.spg-card {
+	width: min(100%, 430px);
+	padding: 42px;
+	border: 1px solid rgba(24, 34, 48, 0.08);
+	border-radius: 18px;
+	background: rgba(255, 255, 255, 0.96);
+	box-shadow: 0 24px 70px rgba(24, 34, 48, 0.12);
+}
+
+.spg-mark {
+	display: grid;
+	width: 48px;
+	height: 48px;
+	margin-bottom: 28px;
+	border-radius: 14px;
+	place-items: center;
+	color: #fff;
+	background: #3155d9;
+	box-shadow: 0 10px 24px rgba(49, 85, 217, 0.25);
+}
+
+.spg-mark svg {
+	width: 25px;
+	height: 25px;
+	fill: currentColor;
+}
+
+.spg-site-name {
+	margin: 0 0 8px;
+	color: #667085;
+	font-size: 13px;
+	font-weight: 650;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.spg-card h1 {
+	margin: 0;
+	font-size: clamp(28px, 7vw, 36px);
+	font-weight: 720;
+	letter-spacing: -0.035em;
+	line-height: 1.12;
+}
+
+.spg-message {
+	margin: 14px 0 28px;
+	color: #596579;
+	font-size: 16px;
+	line-height: 1.55;
+}
+
+.spg-error {
+	margin: 0 0 18px;
+	padding: 12px 14px;
+	border: 1px solid #f4b4b0;
+	border-radius: 9px;
+	color: #8b211b;
+	background: #fff1f0;
+	font-size: 14px;
+	line-height: 1.45;
+}
+
+.spg-card label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 14px;
+	font-weight: 650;
+}
+
+.spg-card input[type="password"] {
+	display: block;
+	width: 100%;
+	height: 48px;
+	margin: 0 0 14px;
+	padding: 0 14px;
+	border: 1px solid #cbd2dc;
+	border-radius: 9px;
+	color: #182230;
+	background: #fff;
+	font: inherit;
+	outline: none;
+	transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.spg-card input[type="password"]:focus {
+	border-color: #3155d9;
+	box-shadow: 0 0 0 4px rgba(49, 85, 217, 0.14);
+}
+
+.spg-card button {
+	width: 100%;
+	min-height: 48px;
+	padding: 10px 18px;
+	border: 0;
+	border-radius: 9px;
+	color: #fff;
+	background: #3155d9;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background 140ms ease, transform 140ms ease;
+}
+
+.spg-card button:hover {
+	background: #2647c4;
+}
+
+.spg-card button:focus-visible {
+	outline: 3px solid rgba(49, 85, 217, 0.35);
+	outline-offset: 3px;
+}
+
+.spg-card button:active {
+	transform: translateY(1px);
+}
+
+@media (max-width: 480px) {
+	body.spg-gate {
+		padding: 14px;
+	}
+
+	.spg-card {
+		padding: 30px 24px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.spg-card input,
+	.spg-card button {
+		transition: none;
+	}
+}
