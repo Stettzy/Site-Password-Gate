@@ -1,23 +1,23 @@
 <?php
 /**
- * Plugin Name:       Site Password Gate
+ * Plugin Name:       Knock First – Password Protect Your Site
  * Description:       Protect an entire WordPress site with one shared password and a clean, accessible unlock screen.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 6.4
  * Requires PHP:      7.4
  * Author:            Stettzy
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       site-password-gate
+ * Text Domain:       knock-first-password-protection
  *
- * @package SitePasswordGate
+ * @package KnockFirstPasswordProtection
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SPGATE_VERSION', '1.0.1' );
+define( 'SPGATE_VERSION', '1.0.2' );
 define( 'SPGATE_PLUGIN_FILE', __FILE__ );
 define( 'SPGATE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SPGATE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'stettzy/site-password-gate',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'name' => 'stettzy/knock-first-password-protection',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'bf8cb4feabd4ac7ae35df6fb399841cbc74c51f1',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -55,10 +55,10 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
-        'stettzy/site-password-gate' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+        'stettzy/knock-first-password-protection' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'bf8cb4feabd4ac7ae35df6fb399841cbc74c51f1',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

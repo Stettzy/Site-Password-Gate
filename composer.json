@@ -1,5 +1,5 @@
 {
-  "name": "stettzy/site-password-gate",
+  "name": "stettzy/knock-first-password-protection",
   "description": "A simple whole-site password gate for WordPress.",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",

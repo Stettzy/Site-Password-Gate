@@ -1,0 +1,9 @@
+/.git
+/.github
+/.distignore
+/composer.json
+/composer.lock
+/bin
+/phpcs.xml.dist
+/tests
+/vendor

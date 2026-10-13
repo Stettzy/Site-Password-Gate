@@ -2,7 +2,7 @@
 /**
  * Remove plugin data on uninstall.
  *
- * @package SitePasswordGate
+ * @package KnockFirstPasswordProtection
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {

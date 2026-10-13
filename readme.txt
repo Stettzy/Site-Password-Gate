@@ -1,18 +1,18 @@
-=== Site Password Gate ===
+=== Knock First – Password Protect Your Site ===
 Contributors: stettzy
-Tags: password protection, private site, maintenance, coming soon, staging
+Tags: password protect, password protection, private site, maintenance, staging
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Protect an entire WordPress site with one shared password and a clean, accessible unlock screen.
+Password protect your entire website with one shared password. Ideal for private sites, staging, launches, and client previews.
 
 == Description ==
 
-Site Password Gate is a focused way to hide a WordPress site's public content behind one shared password. It is useful for staging sites, private launches, client previews, and temporary project sites.
+Knock First makes it easy to password protect an entire WordPress website with one shared password. It is ideal for private sites, staging websites, client previews, coming-soon pages, and launches.
 
 The plugin is disabled by default. After activation, open **Settings > Site Password**, choose a password, and enable protection.
 
@@ -34,7 +34,7 @@ This plugin is a simple privacy gate. It is not a replacement for WordPress user
 
 == Installation ==
 
-1. Install and activate Site Password Gate.
+1. Install and activate Knock First.
 2. Go to **Settings > Site Password**.
 3. Enter a shared password.
 4. Select **Require the site password** and save your changes.
@@ -50,11 +50,11 @@ Yes. The standard WordPress login and administration screens remain available. A
 
 = Is the password stored in plain text? =
 
-No. Site Password Gate uses the WordPress password hashing API. The original password cannot be retrieved from the saved setting.
+No. Knock First uses the WordPress password hashing API. The original password cannot be retrieved from the saved setting.
 
 = What happens when I change the password? =
 
-All existing Site Password Gate access cookies become invalid immediately. Visitors must enter the new password.
+All existing Knock First access cookies become invalid immediately. Visitors must enter the new password.
 
 = Does this hide media files? =
 
@@ -74,6 +74,9 @@ No. It makes no remote requests and stores no visitor records. It sets one neces
 
 == Changelog ==
 
+= 1.0.2 =
+* Rename the plugin to Knock First – Password Protect Your Site and align the publication slug and text domain.
+
 = 1.0.1 =
 * Fix saving the first site password when the settings option does not already exist.
 * Migrate settings from the early development option key.
@@ -83,5 +86,5 @@ No. It makes no remote requests and stores no visitor records. It sets one neces
 
 == Upgrade Notice ==
 
-= 1.0.1 =
-Fixes first-time password saving on sites where the plugin option has not been initialized.
+= 1.0.2 =
+Updates the plugin name and publication slug to the distinctive Knock First identity.

@@ -2,7 +2,7 @@
 /**
  * Main plugin class.
  *
- * @package SitePasswordGate
+ * @package KnockFirstPasswordProtection
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,8 +72,8 @@ final class SPGATE_Plugin {
 			'password_hash'   => '',
 			'duration_hours'  => 168,
 			'allow_logged_in' => 1,
-			'heading'         => __( 'This site is private', 'site-password-gate' ),
-			'message'         => __( 'Enter the site password to continue.', 'site-password-gate' ),
+			'heading'         => __( 'This site is private', 'knock-first-password-protection' ),
+			'message'         => __( 'Enter the site password to continue.', 'knock-first-password-protection' ),
 		);
 	}
 
@@ -190,7 +190,7 @@ final class SPGATE_Plugin {
 				$nonce = isset( $_POST['spgate_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['spgate_nonce'] ) ) : '';
 
 				if ( ! wp_verify_nonce( $nonce, 'spgate_unlock_site' ) ) {
-					$error       = __( 'The form expired. Please try again.', 'site-password-gate' );
+					$error       = __( 'The form expired. Please try again.', 'knock-first-password-protection' );
 					$status_code = 400;
 				} else {
 					// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Passwords must retain every submitted character.
@@ -205,7 +205,7 @@ final class SPGATE_Plugin {
 						exit;
 					}
 
-					$error       = __( 'That password is not correct.', 'site-password-gate' );
+					$error       = __( 'That password is not correct.', 'knock-first-password-protection' );
 					$status_code = 403;
 				}
 			}
@@ -390,7 +390,7 @@ final class SPGATE_Plugin {
 		status_header( $status_code );
 		nocache_headers();
 		header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
-		wp_enqueue_style( 'site-password-gate', $style_url, array(), SPGATE_VERSION );
+		wp_enqueue_style( 'knock-first-password-protection', $style_url, array(), SPGATE_VERSION );
 
 		include SPGATE_PLUGIN_DIR . 'templates/gate.php';
 		exit;
@@ -436,7 +436,7 @@ final class SPGATE_Plugin {
 
 		return new WP_Error(
 			'spgate_site_locked',
-			__( 'This site is password protected.', 'site-password-gate' ),
+			__( 'This site is password protected.', 'knock-first-password-protection' ),
 			array( 'status' => 401 )
 		);
 	}
@@ -528,7 +528,7 @@ final class SPGATE_Plugin {
 				add_settings_error(
 					self::OPTION_NAME,
 					'spgate_password_too_long',
-					__( 'The site password must be 4,096 characters or fewer.', 'site-password-gate' )
+					__( 'The site password must be 4,096 characters or fewer.', 'knock-first-password-protection' )
 				);
 			} else {
 				$output['password_hash']     = wp_hash_password( $password );
@@ -549,7 +549,7 @@ final class SPGATE_Plugin {
 			add_settings_error(
 				self::OPTION_NAME,
 				'spgate_password_required',
-				__( 'Set a password before enabling site protection.', 'site-password-gate' )
+				__( 'Set a password before enabling site protection.', 'knock-first-password-protection' )
 			);
 		}
 
@@ -563,10 +563,10 @@ final class SPGATE_Plugin {
 	 */
 	public function add_settings_page() {
 		add_options_page(
-			__( 'Site Password Gate', 'site-password-gate' ),
-			__( 'Site Password', 'site-password-gate' ),
+			__( 'Knock First', 'knock-first-password-protection' ),
+			__( 'Site Password', 'knock-first-password-protection' ),
 			'manage_options',
-			'site-password-gate',
+			'knock-first-password-protection',
 			array( $this, 'render_settings_page' )
 		);
 	}
@@ -583,16 +583,16 @@ final class SPGATE_Plugin {
 
 		$options   = $this->get_options();
 		$durations = array(
-			1   => __( '1 hour', 'site-password-gate' ),
-			8   => __( '8 hours', 'site-password-gate' ),
-			24  => __( '1 day', 'site-password-gate' ),
-			168 => __( '1 week', 'site-password-gate' ),
-			720 => __( '30 days', 'site-password-gate' ),
+			1   => __( '1 hour', 'knock-first-password-protection' ),
+			8   => __( '8 hours', 'knock-first-password-protection' ),
+			24  => __( '1 day', 'knock-first-password-protection' ),
+			168 => __( '1 week', 'knock-first-password-protection' ),
+			720 => __( '30 days', 'knock-first-password-protection' ),
 		);
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Site Password Gate', 'site-password-gate' ); ?></h1>
-			<p><?php esc_html_e( 'Put the public-facing site behind one shared password. Administrators and the WordPress login always remain accessible.', 'site-password-gate' ); ?></p>
+			<h1><?php esc_html_e( 'Knock First', 'knock-first-password-protection' ); ?></h1>
+			<p><?php esc_html_e( 'Put the public-facing site behind one shared password. Administrators and the WordPress login always remain accessible.', 'knock-first-password-protection' ); ?></p>
 
 			<?php settings_errors( self::OPTION_NAME ); ?>
 
@@ -601,57 +601,57 @@ final class SPGATE_Plugin {
 
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Site protection', 'site-password-gate' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Site protection', 'knock-first-password-protection' ); ?></th>
 						<td>
 							<label for="spg-enabled">
 								<input id="spg-enabled" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[enabled]" type="checkbox" value="1" <?php checked( ! empty( $options['enabled'] ) ); ?>>
-								<?php esc_html_e( 'Require the site password', 'site-password-gate' ); ?>
+								<?php esc_html_e( 'Require the site password', 'knock-first-password-protection' ); ?>
 							</label>
-							<p class="description"><?php esc_html_e( 'Protection starts after you save a password and enable this option.', 'site-password-gate' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Protection starts after you save a password and enable this option.', 'knock-first-password-protection' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="spg-password"><?php esc_html_e( 'Site password', 'site-password-gate' ); ?></label></th>
+						<th scope="row"><label for="spg-password"><?php esc_html_e( 'Site password', 'knock-first-password-protection' ); ?></label></th>
 						<td>
 							<input id="spg-password" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[password]" type="password" value="" autocomplete="new-password" spellcheck="false">
 							<p class="description">
 								<?php
 								if ( ! empty( $options['password_hash'] ) ) {
-									esc_html_e( 'A password is set. Leave this blank to keep it, or enter a new password to replace it.', 'site-password-gate' );
+									esc_html_e( 'A password is set. Leave this blank to keep it, or enter a new password to replace it.', 'knock-first-password-protection' );
 								} else {
-									esc_html_e( 'Choose the password visitors will use. It is stored as a one-way hash.', 'site-password-gate' );
+									esc_html_e( 'Choose the password visitors will use. It is stored as a one-way hash.', 'knock-first-password-protection' );
 								}
 								?>
 							</p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="spg-duration"><?php esc_html_e( 'Keep access for', 'site-password-gate' ); ?></label></th>
+						<th scope="row"><label for="spg-duration"><?php esc_html_e( 'Keep access for', 'knock-first-password-protection' ); ?></label></th>
 						<td>
 							<select id="spg-duration" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[duration_hours]">
 								<?php foreach ( $durations as $hours => $label ) : ?>
 									<option value="<?php echo esc_attr( $hours ); ?>" <?php selected( (int) $options['duration_hours'], $hours ); ?>><?php echo esc_html( $label ); ?></option>
 								<?php endforeach; ?>
 							</select>
-							<p class="description"><?php esc_html_e( 'Changing the password immediately invalidates existing access cookies.', 'site-password-gate' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Changing the password immediately invalidates existing access cookies.', 'knock-first-password-protection' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><?php esc_html_e( 'Logged-in visitors', 'site-password-gate' ); ?></th>
+						<th scope="row"><?php esc_html_e( 'Logged-in visitors', 'knock-first-password-protection' ); ?></th>
 						<td>
 							<label for="spg-allow-logged-in">
 								<input id="spg-allow-logged-in" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[allow_logged_in]" type="checkbox" value="1" <?php checked( ! empty( $options['allow_logged_in'] ) ); ?>>
-								<?php esc_html_e( 'Let logged-in WordPress users bypass the password', 'site-password-gate' ); ?>
+								<?php esc_html_e( 'Let logged-in WordPress users bypass the password', 'knock-first-password-protection' ); ?>
 							</label>
-							<p class="description"><?php esc_html_e( 'Administrators always bypass the gate to prevent lockouts.', 'site-password-gate' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Administrators always bypass the gate to prevent lockouts.', 'knock-first-password-protection' ); ?></p>
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="spg-heading"><?php esc_html_e( 'Screen heading', 'site-password-gate' ); ?></label></th>
+						<th scope="row"><label for="spg-heading"><?php esc_html_e( 'Screen heading', 'knock-first-password-protection' ); ?></label></th>
 						<td><input id="spg-heading" class="regular-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[heading]" type="text" value="<?php echo esc_attr( $options['heading'] ); ?>"></td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="spg-message"><?php esc_html_e( 'Screen message', 'site-password-gate' ); ?></label></th>
+						<th scope="row"><label for="spg-message"><?php esc_html_e( 'Screen message', 'knock-first-password-protection' ); ?></label></th>
 						<td><textarea id="spg-message" class="large-text" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[message]" rows="3"><?php echo esc_textarea( $options['message'] ); ?></textarea></td>
 					</tr>
 				</table>
@@ -659,7 +659,7 @@ final class SPGATE_Plugin {
 				<?php submit_button(); ?>
 			</form>
 
-			<p><strong><?php esc_html_e( 'Important:', 'site-password-gate' ); ?></strong> <?php esc_html_e( 'This is a simple privacy gate for staging sites, private launches, and shared previews. It is not a replacement for per-user authentication on sites containing sensitive data.', 'site-password-gate' ); ?></p>
+			<p><strong><?php esc_html_e( 'Important:', 'knock-first-password-protection' ); ?></strong> <?php esc_html_e( 'This is a simple privacy gate for staging sites, private launches, and shared previews. It is not a replacement for per-user authentication on sites containing sensitive data.', 'knock-first-password-protection' ); ?></p>
 		</div>
 		<?php
 	}
@@ -671,8 +671,8 @@ final class SPGATE_Plugin {
 	 * @return array<int, string>
 	 */
 	public function add_plugin_action_links( $links ) {
-		$url           = admin_url( 'options-general.php?page=site-password-gate' );
-		$settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'site-password-gate' ) . '</a>';
+		$url           = admin_url( 'options-general.php?page=knock-first-password-protection' );
+		$settings_link = '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Settings', 'knock-first-password-protection' ) . '</a>';
 
 		array_unshift( $links, $settings_link );
 

@@ -4,7 +4,7 @@
  *
  * Available variables are prepared and escaped at output by SPGATE_Plugin::render_gate().
  *
- * @package SitePasswordGate
+ * @package KnockFirstPasswordProtection
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noindex,nofollow,noarchive">
 	<title><?php echo esc_html( $heading . ' - ' . $site_name ); ?></title>
-	<?php wp_print_styles( 'site-password-gate' ); ?>
+	<?php wp_print_styles( 'knock-first-password-protection' ); ?>
 	<?php if ( $site_icon ) : ?>
 		<link rel="icon" href="<?php echo esc_url( $site_icon ); ?>" sizes="64x64">
 	<?php endif; ?>
@@ -44,9 +44,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<input type="hidden" name="spgate_redirect" value="<?php echo esc_url( $redirect_url ); ?>">
 			<?php wp_nonce_field( 'spgate_unlock_site', 'spgate_nonce' ); ?>
 
-			<label for="spg-password"><?php esc_html_e( 'Password', 'site-password-gate' ); ?></label>
+			<label for="spg-password"><?php esc_html_e( 'Password', 'knock-first-password-protection' ); ?></label>
 			<input id="spg-password" name="spgate_password" type="password" required autocomplete="current-password" autofocus>
-			<button type="submit"><?php esc_html_e( 'View site', 'site-password-gate' ); ?></button>
+			<button type="submit"><?php esc_html_e( 'View site', 'knock-first-password-protection' ); ?></button>
 		</form>
 	</main>
 </body>

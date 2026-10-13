@@ -5,14 +5,14 @@
  * These stubs intentionally cover only the WordPress APIs exercised below.
  * Integration behavior is verified separately with Plugin Check/WordPress.
  *
- * @package SitePasswordGate
+ * @package KnockFirstPasswordProtection
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SPGATE_PLUGIN_FILE', dirname( __DIR__ ) . '/site-password-gate.php' );
+define( 'SPGATE_PLUGIN_FILE', dirname( __DIR__ ) . '/knock-first-password-protection.php' );
 define( 'SPGATE_PLUGIN_DIR', dirname( __DIR__ ) . '/' );
-define( 'SPGATE_PLUGIN_URL', 'https://example.test/wp-content/plugins/site-password-gate/' );
-define( 'SPGATE_VERSION', '1.0.1' );
+define( 'SPGATE_PLUGIN_URL', 'https://example.test/wp-content/plugins/knock-first-password-protection/' );
+define( 'SPGATE_VERSION', '1.0.2' );
 define( 'HOUR_IN_SECONDS', 3600 );
 define( 'DAY_IN_SECONDS', 86400 );
 define( 'COOKIEHASH', 'testhash' );
@@ -257,4 +257,4 @@ spg_assert( 0 === $invalid['enabled'], 'Protection cannot be enabled without a p
 spg_assert( 168 === $invalid['duration_hours'], 'Unknown access durations must fall back to one week.' );
 spg_assert( ! empty( $GLOBALS['spg_test_settings_errors'] ), 'Invalid settings must show an administrator-facing error.' );
 
-fwrite( STDOUT, "Site Password Gate behavioral tests passed.\n" );
+fwrite( STDOUT, "Knock First behavioral tests passed.\n" );
